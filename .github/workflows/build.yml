@@ -107,6 +107,7 @@ jobs:
 
       # Prepare plugin archive content for creating artifact
       - name: Prepare Plugin Artifact
+        if: always()
         id: artifact
         shell: bash
         run: |
@@ -118,6 +119,7 @@ jobs:
 
       # Store already-built plugin as an artifact for downloading
       - name: Upload artifact
+        if: always()
         uses: actions/upload-artifact@v2.2.4
         with:
           name: ${{ steps.artifact.outputs.filename }}

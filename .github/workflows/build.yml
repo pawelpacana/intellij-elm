@@ -84,6 +84,7 @@ jobs:
 
       # Cache Plugin Verifier IDEs
       - name: Setup Plugin Verifier IDEs Cache
+        if: ${{ always() }}
         uses: actions/cache@v2.1.7
         with:
           path: ${{ steps.properties.outputs.pluginVerifierHomeDir }}/ides
@@ -91,6 +92,7 @@ jobs:
 
       # Run Verify Plugin task and IntelliJ Plugin Verifier tool
       - name: Run Plugin Verification tasks
+        if: ${{ always() }}
         run: ./gradlew runPluginVerifier -Pplugin.verifier.home.dir=${{ steps.properties.outputs.pluginVerifierHomeDir }}
 
       # Collect Plugin Verifier Result
